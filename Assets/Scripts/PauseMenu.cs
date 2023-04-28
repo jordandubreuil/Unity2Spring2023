@@ -7,10 +7,18 @@ public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenu;
 
+    [Range(0,1)]
+    public float timeScaleInput = 1.0f;
+
     // Start is called before the first frame update
     void Start()
     {
         pauseMenu.SetActive(false);
+    }
+
+    private void Update()
+    {
+       // Time.timeScale = timeScaleInput;
     }
 
     public void PauseGame(InputAction.CallbackContext ctx)

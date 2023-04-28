@@ -36,8 +36,9 @@ public class PlayerController : MonoBehaviour
         {
             h = DampenValue(h, moveDir.x);
             v = DampenValue(v, moveDir.y);
-
+        
             inputVector = new Vector3(h * speed, rb.velocity.y, v * speed);
+            //Time.timeScale = Mathf.Clamp(inputVector.magnitude, 0, 1);
             transform.LookAt(transform.position + new Vector3(inputVector.x, 0, inputVector.z));
             rb.velocity = inputVector;
             anim.SetFloat("Moving", moveDir.magnitude);

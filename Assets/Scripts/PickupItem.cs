@@ -20,6 +20,7 @@ public class PickupItem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Time.timeScale > 0)
         transform.Rotate(0,0,1.5f);
     }
 
