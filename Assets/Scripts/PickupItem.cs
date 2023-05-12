@@ -5,6 +5,8 @@ using UnityEngine;
 public class PickupItem : MonoBehaviour
 {
     CoinHUD coinDisplay;
+    public AudioClip coinSFX;
+    AudioSource sourceSFX;
 
     private void Awake()
     {
@@ -14,7 +16,8 @@ public class PickupItem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        coinSFX = Resources.Load<AudioClip>("coinPickup");
+        sourceSFX = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -28,8 +31,10 @@ public class PickupItem : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            sourceSFX.PlayOneShot(coinSFX);
             coinDisplay.CoinCollected();
-            Destroy(gameObject);
+            transform.position = new Vector3(0, -10000, 0);
+            Destroy(gameObject, 0.5f);
         }
     }
 }
